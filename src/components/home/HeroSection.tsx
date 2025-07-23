@@ -1,5 +1,5 @@
 "use client"
-
+import { motion } from "framer-motion"
 import Image from "next/image"
 
 const features = [
@@ -36,13 +36,20 @@ export default function HeroSection() {
         {features.map((feature, index) => (
           <div key={index} className="bg-green-500 p-4 rounded">
             <div className="aspect-w-16 aspect-h-9 overflow-hidden rounded">
-              <Image
-                src={feature.image}
-                alt="Feature"
-                width={400}
-                height={300}
-                className="object-cover w-full h-full"
-              />
+              <motion.div
+                initial={{ scale: 1.1, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="w-full h-full"
+              >
+                <Image
+                  src={feature.image}
+                  alt="Feature"
+                  width={400}
+                  height={300}
+                  className="object-cover w-full h-full"
+                />
+              </motion.div>
             </div>
             <p className="mt-4 text-sm">{feature.text}</p>
           </div>

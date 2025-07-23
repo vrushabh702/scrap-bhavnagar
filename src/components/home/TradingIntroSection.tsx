@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from "framer-motion"
 import Image from "next/image"
 import { JSX } from "react"
 
@@ -53,13 +54,20 @@ export default function TradingIntroSection(): JSX.Element {
 
             {/* Right Image + Stats */}
             <div className="relative md:w-1/2">
-              <Image
-                src={section.image}
-                alt={section.heading}
-                width={600}
-                height={400}
-                className="rounded-xl w-full object-cover"
-              />
+              <motion.div
+                initial={{ scale: 1.1, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="w-full h-full"
+              >
+                <Image
+                  src={section.image}
+                  alt={section.heading}
+                  width={600}
+                  height={400}
+                  className="rounded-xl w-full object-cover"
+                />
+              </motion.div>
               <div className="md:absolute md:left-0 md:top-1/2 md:-translate-x-1/2 md:translate-y-1/2 bg-green-600 text-white px-4  py-4 md:px-8 md:py-6 md:flex md:space-x-12  space-y-4 md:space-y-0  shadow-lg rounded-md">
                 {section.stats.map((item, i) => (
                   <div key={i} className="text-center">
