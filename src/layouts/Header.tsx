@@ -9,10 +9,10 @@ import clsx from "clsx"
 
 const navItems = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Contact", href: "/contact" },
-  { name: "Blog", href: "/blog" },
+  { name: "About", href: "/about-metal-scrap" },
+  { name: "Services", href: "/services-metal-scrap-trading" },
+  { name: "Contact", href: "/contact-metal-scrap" },
+  { name: "Blog", href: "/scrap-enterprise-blogs" },
 ]
 
 export default function Header() {
