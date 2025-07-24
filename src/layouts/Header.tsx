@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { HiMenu, HiX } from "react-icons/hi" // Heroicons for menu/cross
-import clsx from "clsx"
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { HiMenu, HiX } from "react-icons/hi"; // Heroicons for menu/cross
+import clsx from "clsx";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -13,17 +13,17 @@ const navItems = [
   { name: "Services", href: "/services-metal-scrap-trading" },
   { name: "Contact", href: "/contact-metal-scrap" },
   { name: "Blog", href: "/scrap-enterprise-blogs" },
-]
+];
 
 export default function Header() {
-  const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="w-full px-6 py-4 flex items-center justify-between bg-slate-100 shadow-sm">
       {/* Logo */}
       <div className="flex flex-col items-center space-y-1">
-        <Image src="/logo.png" alt="Logo" width={40} height={40} />
+        <Image src="/media/images/logo.png" alt="Logo" width={40} height={40} />
         <span className="text-xs tracking-wide text-gray-600 font-semibold">
           AI ENTERPRISE
         </span>
@@ -73,5 +73,5 @@ export default function Header() {
         </div>
       )}
     </header>
-  )
+  );
 }

@@ -1,30 +1,30 @@
-"use client"
-import { useState } from "react"
-import BlogCard from "@/components/common/BlogCard"
-import { blogPosts } from "@/data/blogData"
-import { FaBlog } from "react-icons/fa"
+"use client";
+import { useState } from "react";
+import BlogCard from "@/components/common/BlogCard";
+import { blogPosts } from "@/data/blogData";
+import { FaBlog } from "react-icons/fa";
 
-const POSTS_PER_PAGE = 4
+const POSTS_PER_PAGE = 4;
 
 export default function BlogListingPage() {
-  const [page, setPage] = useState(1)
-  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE)
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(blogPosts.length / POSTS_PER_PAGE);
 
   const paginatedPosts = blogPosts.slice(
     (page - 1) * POSTS_PER_PAGE,
     page * POSTS_PER_PAGE
-  )
+  );
 
   interface BlogHeroProps {
-    title?: string
-    subtitle?: string
+    title?: string;
+    subtitle?: string;
   }
 
   const blogData: BlogHeroProps = {
     title: "Scrap Enterprise Blogs",
     subtitle:
       "Explore our latest blogs on scrap enterprise, industry insights, global scrap trading, best practices in recycling, and how technology is transforming the sustainable metal industry worldwide",
-  }
+  };
 
   return (
     <section>
@@ -54,7 +54,7 @@ export default function BlogListingPage() {
         </div>
       </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-16 px-24">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4 py-8 md:py-16 md:px-24">
         {paginatedPosts.map((post) => (
           <BlogCard key={post.slug} post={post} />
         ))}
@@ -81,5 +81,5 @@ export default function BlogListingPage() {
         </button>
       </div>
     </section>
-  )
+  );
 }
