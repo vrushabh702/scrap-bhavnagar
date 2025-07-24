@@ -10,6 +10,92 @@ import {
   FaGlobe,
   FaRecycle,
 } from "react-icons/fa"
+import { IconType } from "react-icons"
+interface ContactInfo {
+  icon: IconType
+  label: string
+  href?: string
+  isLink?: boolean
+}
+
+interface InfoBlock {
+  icon: IconType
+  title: string
+  description: string
+}
+
+interface SocialLink {
+  icon: IconType
+  href: string
+  label: string
+}
+
+const infoBlocks: InfoBlock[] = [
+  {
+    icon: FaGlobe,
+    title: "AIEnterprise | Metal Scrap Importers & Exporters",
+    description: "HMS 1 & 2 • Motor Scrap • Aluminum • Industrial Recyclables",
+  },
+  {
+    icon: FaRecycle,
+    title: "Driving Ethical Recycling Worldwide",
+    description: "Based in Bhavnagar, Gujarat — Serving Global Markets",
+  },
+  {
+    icon: FaMapMarkerAlt,
+    title: "",
+    description:
+      "Plot No. 28/F, Madhiya Road, Near Victor Rolling Mill, Above Khumbarwada, Bhavnagar, Gujarat – 364006",
+  },
+]
+
+const contactDetails: ContactInfo[] = [
+  {
+    icon: FaPhoneAlt,
+    label: "+91 7434986686",
+    href: "tel:+917434986686",
+    isLink: true,
+  },
+  {
+    icon: FaEnvelope,
+    label: "aienterprise1008@gmail.com",
+    href: "mailto:aienterprise1008@gmail.com",
+    isLink: true,
+  },
+]
+
+const inquiryContacts: ContactInfo[] = [
+  {
+    icon: FaEnvelope,
+    label: "infoaienterprise3@gmail.com",
+    href: "mailto:infoaienterprise3@gmail.com",
+    isLink: true,
+  },
+  {
+    icon: FaPhoneAlt,
+    label: "+91-8000852020",
+    href: "tel:+918000852020",
+    isLink: true,
+  },
+]
+
+const socialLinks: SocialLink[] = [
+  {
+    icon: FaFacebookF,
+    href: "#",
+    label: "Facebook",
+  },
+  {
+    icon: FaInstagram,
+    href: "#",
+    label: "Instagram",
+  },
+  {
+    icon: FaWhatsapp,
+    href: "#",
+    label: "WhatsApp",
+  },
+]
 
 export default function Footer() {
   return (
@@ -18,49 +104,37 @@ export default function Footer() {
         {/* Left Section */}
         <div>
           <h2 className="text-lg font-semibold mb-4">Sustainability</h2>
-          <div className="flex items-start gap-2 mb-2">
-            <FaGlobe className="text-green-500 mt-1" />
-            <p className="text-sm">
-              <span className="font-bold">
-                AIEnterprise | Metal Scrap Importers & Exporters
-              </span>
-              <br />
-              <em>
-                HMS 1 & 2 • Motor Scrap • Aluminum • Industrial Recyclables
-              </em>
-            </p>
-          </div>
-          <div className="flex items-start gap-2 mb-2">
-            <FaRecycle className="text-green-500 mt-1" />
-            <p className="text-sm">
-              Driving Ethical Recycling Worldwide <br />
-              Based in Bhavnagar, Gujarat — Serving Global Markets
-            </p>
-          </div>
-          <div className="flex items-start gap-2 mb-2">
-            <FaMapMarkerAlt className="text-green-500 mt-1" />
-            <p className="text-sm">
-              Plot No. 28/F, Madhiya Road, Near Victor Rolling Mill, Above
-              Khumbarwada, Bhavnagar, Gujarat – 364006
-            </p>
-          </div>
-          <div className="flex items-center gap-2 mb-2">
-            <FaPhoneAlt className="text-green-500" />
-            <a href="tel:+917434986686" className="text-sm hover:underline">
-              +91 7434986686
-            </a>
-          </div>
-          <div className="flex items-center gap-2 mb-4">
-            <FaEnvelope className="text-green-500" />
-            <a
-              href="mailto:aienterprise1008@gmail.com"
-              className="text-sm hover:underline"
-            >
-              aienterprise1008@gmail.com
-            </a>
-          </div>
-          <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()} AIEnterprise. All rights reserved. |
+
+          {infoBlocks.map((block, i) => (
+            <div key={i} className="flex items-start gap-2 mb-2">
+              <block.icon className="text-green-500 mt-1" />
+              <p className="text-sm">
+                {block.title && (
+                  <span className="font-bold">
+                    {block.title}
+                    <br />
+                  </span>
+                )}
+                <em>{block.description}</em>
+              </p>
+            </div>
+          ))}
+
+          {contactDetails.map((item, i) => (
+            <div key={i} className="flex items-center gap-2 mb-2">
+              <item.icon className="text-green-500" />
+              {item.isLink ? (
+                <a href={item.href} className="text-sm hover:underline">
+                  {item.label}
+                </a>
+              ) : (
+                <span className="text-sm">{item.label}</span>
+              )}
+            </div>
+          ))}
+
+          <p className="text-xs text-gray-400 mt-4">
+            © {new Date().getFullYear()} AIEnterprise. All rights reserved. |{" "}
             <span className="text-white font-semibold ml-1">
               Committed to Sustainable Trade
             </span>
@@ -70,44 +144,27 @@ export default function Footer() {
         {/* Middle Section */}
         <div>
           <h2 className="text-lg font-semibold mb-4">For Inquiries</h2>
-          <div className="flex items-center gap-2 mb-2">
-            <FaEnvelope className="text-green-500" />
-            <a
-              href="mailto:infoaienterprise3@gmail.com"
-              className="text-sm hover:underline"
-            >
-              infoaienterprise3@gmail.com
-            </a>
-          </div>
-          <div className="flex items-center gap-2 mb-6">
-            <FaPhoneAlt className="text-green-500" />
-            <a href="tel:+918000852020" className="text-sm hover:underline">
-              +91-8000852020
-            </a>
-          </div>
 
-          <div className="flex gap-4 text-xl text-white">
-            <a
-              href="#"
-              className="hover:text-green-500 transition-all"
-              aria-label="Facebook"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="#"
-              className="hover:text-green-500 transition-all"
-              aria-label="Instagram"
-            >
-              <FaInstagram />
-            </a>
-            <a
-              href="#"
-              className="hover:text-green-500 transition-all"
-              aria-label="WhatsApp"
-            >
-              <FaWhatsapp />
-            </a>
+          {inquiryContacts.map((item, i) => (
+            <div key={i} className="flex items-center gap-2 mb-2">
+              <item.icon className="text-green-500" />
+              <a href={item.href} className="text-sm hover:underline">
+                {item.label}
+              </a>
+            </div>
+          ))}
+
+          <div className="flex gap-4 text-xl text-white mt-6">
+            {socialLinks.map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                aria-label={social.label}
+                className="hover:text-green-500 transition-all"
+              >
+                <social.icon />
+              </a>
+            ))}
           </div>
         </div>
 

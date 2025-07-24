@@ -2,6 +2,7 @@
 import { useState } from "react"
 import BlogCard from "@/components/common/BlogCard"
 import { blogPosts } from "@/data/blogData"
+import { FaBlog } from "react-icons/fa"
 
 const POSTS_PER_PAGE = 4
 
@@ -14,21 +15,46 @@ export default function BlogListingPage() {
     page * POSTS_PER_PAGE
   )
 
+  interface BlogHeroProps {
+    title?: string
+    subtitle?: string
+  }
+
+  const blogData: BlogHeroProps = {
+    title: "Scrap Enterprise Blogs",
+    subtitle:
+      "Explore our latest blogs on scrap enterprise, industry insights, global scrap trading, best practices in recycling, and how technology is transforming the sustainable metal industry worldwide",
+  }
+
   return (
-    <section className="container mx-auto px-4 py-10">
-      {/* <h2 className="text-3xl font-bold mb-6">Latest Blogs</h2> */}
-      <section className="w-full bg-slate-700 py-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl font-bold text-slate-50 mb-2">
-            Scrap Enterprise Blogs
-          </h1>
-          <p className="text-slate-200 mb-10">
-            Explore our latest blogs on scrap enterprise, industry insights, and
-            sustainable practices.
+    <section>
+      <section className="relative bg-green-900 text-white py-24 md:py-32 px-6 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-green-900 via-green-800 to-green-900 opacity-80 z-0" />
+
+        <div className="relative z-10 max-w-4xl mx-auto">
+          <div className="flex justify-center items-center gap-3 mb-4">
+            <FaBlog className="text-white text-4xl" />
+            <h1 className="text-4xl md:text-5xl font-extrabold">
+              {blogData.title}
+            </h1>
+          </div>
+
+          <p className="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+            {blogData.subtitle}
           </p>
+
+          {/* Optional CTA */}
+          <div className="mt-8">
+            <input
+              type="text"
+              placeholder="Search blogs..."
+              className="w-full max-w-md px-4 py-3 rounded-xl text-gray-900 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white"
+            />
+          </div>
         </div>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 py-16 px-24">
         {paginatedPosts.map((post) => (
           <BlogCard key={post.slug} post={post} />
         ))}
