@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
 type Testimonial = {
-  name: string
-  message: string
-  quote: string
-  rating: number
-  avatar: string
-}
+  name: string;
+  message: string;
+  quote: string;
+  rating: number;
+  avatar: string;
+};
 
 export default function TestimonialsSection() {
   const testimonials: Testimonial[] = [
@@ -26,7 +26,7 @@ export default function TestimonialsSection() {
       rating: 5,
       avatar: "/media/images/home/testimonial/jane.avif",
     },
-  ]
+  ];
 
   return (
     <section
@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
             <div className="text-xl font-bold mb-3 text-center">
               {"★".repeat(t.rating)}
             </div>
-            <p className="italic text-lg text-center mb-4">"{t.quote}"</p>
+            <p className="italic text-lg text-center mb-4">{t.quote}</p>
             <p className="text-sm text-center font-light">{t.message}</p>
             <div className="mt-6 flex flex-col items-center justify-center">
               <Image
@@ -60,5 +60,5 @@ export default function TestimonialsSection() {
         ))}
       </div>
     </section>
-  )
+  );
 }
